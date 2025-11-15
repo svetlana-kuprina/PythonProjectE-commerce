@@ -1,4 +1,6 @@
 def test_app_product_category(app_product_category):
+    """Тест класса Category"""
+
     assert app_product_category.name == "Смартфоны"
     assert (
         app_product_category.description
