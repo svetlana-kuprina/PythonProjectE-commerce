@@ -19,7 +19,7 @@ class Category:
         self.__products = products
 
         Category.product_count = len(products)
-
+        Category.category_count += 1
 
     @property
     def products(self) -> List[Product]:
@@ -29,13 +29,13 @@ class Category:
 
     def add_product(self, product: Product):
         self.__products.append(product)
-        Category.category_count += 1
+        Category.product_count = len(self.__products)
 
     @property
     def products_str(self) -> str:
         """Геттер для списка продуктов. Возвращает строку вида: Название продукта, 80 руб. Остаток: 15 шт."""
 
-        product_str = ''
+        product_str = ""
         for product in self.__products:
-            product_str += f'{product.name},  {product.price} руб. Остаток: {product.quantity} шт.\n'
+            product_str += f"{product.name},  {product.price} руб. Остаток: {product.quantity} шт.\n"
         return product_str

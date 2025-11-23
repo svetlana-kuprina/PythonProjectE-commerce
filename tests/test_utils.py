@@ -1,11 +1,11 @@
 import json
-from unittest.mock import patch, mock_open
+from unittest.mock import mock_open, patch
 
-from src.utils import open_json, object_from_json
+from src.utils import object_from_json, open_json
 
 
 @patch("builtins.open", new_callable=mock_open)
-def test_open_json(mock_open_json):
+def test_open_json(mock_open_json) -> None:
     """Тест функции принимает на вход путь до JSON-файла и возвращает список словарей
     с данными. Используется Mock и patch"""
 
@@ -24,14 +24,14 @@ def test_open_json(mock_open_json):
     assert open_json("test.json") == data_mock
 
 
-def test_object_from_json():
-    """Тест функции object_from_json принимает список словарей и возвращает объекты классов """
+def test_object_from_json() -> None:
+    """Тест функции object_from_json принимает список словарей и возвращает объекты классов"""
 
     test_list = [
         {
             "name": "Смартфоны",
             "description": "Смартфоны, как средство не только коммуникации, "
-                           "но и получение дополнительных функций для удобства жизни",
+            "но и получение дополнительных функций для удобства жизни",
             "products": [
                 {
                     "name": "Samsung Galaxy C23 Ultra",
@@ -46,7 +46,7 @@ def test_object_from_json():
         {
             "name": "Телевизоры",
             "description": "Современный телевизор, который позволяет наслаждаться просмотром, "
-                           "станет вашим другом и помощником",
+            "станет вашим другом и помощником",
             "products": [
                 {"name": '55" QLED 4K', "description": "Фоновая подсветка", "price": 123000.0, "quantity": 7}
             ],

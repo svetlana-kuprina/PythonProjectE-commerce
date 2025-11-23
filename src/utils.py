@@ -1,12 +1,12 @@
 import json
 import os
-from typing import List, Any
+from typing import Any
 
 from src.Category import Category
 from src.Product import Product
 
 
-def open_json(path: str) ->  Any:
+def open_json(path: str) -> Any:
     """Функция читает json файл и записывает его как список словарей"""
 
     full_path = os.path.abspath(path)
