@@ -11,6 +11,8 @@ def test_product(app_product: Product) -> None:
 
 
 def test_new_product(app_product: Product):
+    """Тест класса Product. Добавляем новый продукт"""
+
     new_product = app_product.new_product(
         {
             "name": "Samsung Galaxy S23 Ultra",
@@ -38,3 +40,15 @@ def test_price_error(capsys, app_product: Product) -> None:
     app_product.price = 0.0
     message = capsys.readouterr()
     assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+
+
+def test_product_str(app_product: Product) -> None:
+    """Тест класса Product __str__."""
+
+    assert str(app_product) == "Samsung Galaxy S23 Ultra,  180000.0 руб. Остаток: 5 шт."
+
+
+def test_product__str(app_product: Product, app_product2) -> None:
+    """Тест класса Product __app__."""
+
+    assert app_product + app_product2 == 1000000.0
