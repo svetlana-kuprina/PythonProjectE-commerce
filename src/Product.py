@@ -15,14 +15,26 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
+    def __str__(self) -> str:
+        """Строковое отображение в следующем виде: Название продукта, XX руб. Остаток: XX шт."""
+
+        return f"{self.name},  {self.__price} руб. Остаток: {self.quantity} шт."
+
+    def __add__(self, other) -> int:
+        """Реализована возможность их складывать товары."""
+
+        return (self.__price * self.quantity) + (other.__price * other.quantity)
+
     @classmethod
-    def new_product(cls, new_prod: Dict):
+    def new_product(cls, new_prod: Dict) -> "Product":
         """Класс-метод добавления нового продукта"""
+
         return cls(new_prod["name"], new_prod["description"], new_prod["price"], new_prod["quantity"])
 
     @property
     def price(self):
         """Геттер приватного атрибута цена"""
+
         return self.__price
 
     @price.setter
