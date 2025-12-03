@@ -39,3 +39,14 @@ def test_products_str(app_product_category: Category) -> None:
     """Тест класса Category, геттера products"""
 
     assert app_product_category.products_str == "Samsung Galaxy S23 Ultra,  180000.0 руб. Остаток: 5 шт.\n"
+
+
+def test_products__str(app_product_category: Category) -> None:
+    """Тест класса Category, геттера products __str__"""
+
+    assert str(app_product_category) == "Смартфоны, количество продуктов: 5 шт."
+
+
+def test_products_iter(category_iter) -> None:
+    assert category_iter.index == 0
+    assert next(category_iter).name == "Samsung Galaxy S23 Ultra"
