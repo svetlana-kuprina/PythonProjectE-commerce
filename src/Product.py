@@ -9,12 +9,12 @@ class Product:
     price: float
     quantity: int
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, color: str):
+    def __init__(self, name: str, description: str, price: float, quantity: int):
         self.name = name
         self.description = description
         self.__price = price
         self.quantity = quantity
-        self.color = color
+
 
     def __str__(self) -> str:
         """Строковое отображение в следующем виде: Название продукта, XX руб. Остаток: XX шт."""
@@ -22,9 +22,12 @@ class Product:
         return f"{self.name},  {self.__price} руб. Остаток: {self.quantity} шт."
 
     def __add__(self, other) -> int:
-        """Реализована возможность их складывать товары."""
+        """Реализована возможность складывать товары."""
 
-        return (self.__price * self.quantity) + (other.__price * other.quantity)
+        if type(other) == self.__class__:
+            return (self.__price * self.quantity) + (other.__price * other.quantity)
+        else:
+            raise TypeError
 
     @classmethod
     def new_product(cls, new_prod: Dict) -> "Product":
@@ -50,12 +53,13 @@ class Product:
 class Smartphone(Product):
     """Класс обрабатывает информацию о продукте категории товаров Смартфон"""
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: str, model: str,
-                 memory: str, color: str):
-        super().__init__(name, description, price, quantity, color)
+    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str,
+                 memory: int, color: str):
+        super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
         self.memory = memory
+        self.color = color
 
 
 class LawnGrass(Product):
@@ -63,6 +67,7 @@ class LawnGrass(Product):
 
     def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str,
                  color: str):
-        super().__init__(name, description, price, quantity, color)
+        super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
+        self.color = color

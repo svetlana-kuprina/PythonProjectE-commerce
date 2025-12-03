@@ -52,3 +52,30 @@ def test_product__str(app_product: Product, app_product2) -> None:
     """Тест класса Product __app__."""
 
     assert app_product + app_product2 == 1000000.0
+
+def test_smartphone(smartphone):
+    """Тест параметров класса Smartphone"""
+
+    assert smartphone.name == "Iphone 15"
+    assert smartphone.description == "512GB, Gray space"
+    assert smartphone.price == 210000.0
+    assert smartphone.quantity == 8
+    assert smartphone.efficiency == 98.2
+    assert smartphone.model == "15"
+    assert smartphone.memory == 512
+    assert smartphone.color == "Gray space"
+
+def test_lawngrass(lawngrass):
+    """Тест параметров класса Smartphone"""
+
+    assert lawngrass.name == "Газонная трава"
+    assert lawngrass.description == "Элитная трава для газона"
+    assert lawngrass.price == 500.0
+    assert lawngrass.quantity == 20
+    assert lawngrass.country == "Россия"
+    assert lawngrass.germination_period == "7 дней"
+    assert lawngrass.color == "Зеленый"
+
+def test_product_add_error(app_product: Product, app_product2) -> None:
+    while
+
