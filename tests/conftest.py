@@ -37,5 +37,6 @@ def smartphone () -> Smartphone:
 
 @pytest.fixture
 def lawngrass()-> LawnGrass:
+
     product1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
     return product1

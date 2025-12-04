@@ -1,4 +1,6 @@
-from src.Product import Product
+import pytest
+
+from src.Product import Product, LawnGrass, Smartphone
 
 
 def test_product(app_product: Product) -> None:
@@ -76,6 +78,9 @@ def test_lawngrass(lawngrass):
     assert lawngrass.germination_period == "7 дней"
     assert lawngrass.color == "Зеленый"
 
-def test_product_add_error(app_product: Product, app_product2) -> None:
-    while
+def test_product_add_error(app_product: Product,  lawngrass: LawnGrass) -> None:
+    grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
+    smartphone2 = Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
+    while pytest.raises(TypeError):
+        invalid_sum = smartphone2 + grass1
 
