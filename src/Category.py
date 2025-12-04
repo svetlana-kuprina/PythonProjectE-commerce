@@ -35,7 +35,7 @@ class Category:
 
         return self.__products
 
-    def add_product(self, product: Product):
+    def add_product(self, product: Product) -> None:
         """Модуль реализующий добавление продуктов"""
 
         if isinstance(product, Product):
@@ -55,12 +55,14 @@ class Category:
 
 
 class ProductCategoryIter:
+    """Класс итераций по продуктам"""
+
     def __init__(self, category_obj: Category):
         self.category_obj = category_obj
         self.index = 0
 
     def __iter__(self):
-        """ Итератор возвращать очередной товар категории."""
+        """Итератор возвращать очередной товар категории."""
 
         self.index = 0
         return self

@@ -15,7 +15,6 @@ class Product:
         self.__price = price
         self.quantity = quantity
 
-
     def __str__(self) -> str:
         """Строковое отображение в следующем виде: Название продукта, XX руб. Остаток: XX шт."""
 
@@ -24,7 +23,7 @@ class Product:
     def __add__(self, other) -> int:
         """Реализована возможность складывать товары."""
 
-        if type(other) == self.__class__:
+        if type(other) is self.__class__:
             return (self.__price * self.quantity) + (other.__price * other.quantity)
         else:
             raise TypeError
@@ -53,8 +52,17 @@ class Product:
 class Smartphone(Product):
     """Класс обрабатывает информацию о продукте категории товаров Смартфон"""
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, efficiency: float, model: str,
-                 memory: int, color: str):
+    def __init__(
+            self,
+            name: str,
+            description: str,
+            price: float,
+            quantity: int,
+            efficiency: float,
+            model: str,
+            memory: int,
+            color: str,
+    ):
         super().__init__(name, description, price, quantity)
         self.efficiency = efficiency
         self.model = model
@@ -65,12 +73,21 @@ class Smartphone(Product):
 class LawnGrass(Product):
     """Класс обрабатывает информацию о продукте категории товаров Трава газонная"""
 
-    def __init__(self, name: str, description: str, price: float, quantity: int, country: str, germination_period: str,
-                 color: str):
+    def __init__(
+            self,
+            name: str,
+            description: str,
+            price: float,
+            quantity: int,
+            country: str,
+            germination_period: str,
+            color: str,
+    ):
         super().__init__(name, description, price, quantity)
         self.country = country
         self.germination_period = germination_period
         self.color = color
+
 
 if __name__ == "__main__":
     grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")

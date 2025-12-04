@@ -1,4 +1,4 @@
-from src.Category import Category
+from src.Category import Category, ProductCategoryIter
 from src.Product import Product
 
 
@@ -47,6 +47,6 @@ def test_products__str(app_product_category: Category) -> None:
     assert str(app_product_category) == "Смартфоны, количество продуктов: 5 шт."
 
 
-def test_products_iter(category_iter) -> None:
+def test_products_iter(category_iter: ProductCategoryIter) -> None:
     assert category_iter.index == 0
     assert next(category_iter).name == "Samsung Galaxy S23 Ultra"

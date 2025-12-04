@@ -1,6 +1,6 @@
 import pytest
 
-from src.Product import Product, LawnGrass, Smartphone
+from src.Product import LawnGrass, Product, Smartphone
 
 
 def test_product(app_product: Product) -> None:
@@ -12,7 +12,7 @@ def test_product(app_product: Product) -> None:
     assert app_product.quantity == 5
 
 
-def test_new_product(app_product: Product):
+def test_new_product(app_product: Product) -> None:
     """Тест класса Product. Добавляем новый продукт"""
 
     new_product = app_product.new_product(
@@ -50,12 +50,13 @@ def test_product_str(app_product: Product) -> None:
     assert str(app_product) == "Samsung Galaxy S23 Ultra,  180000.0 руб. Остаток: 5 шт."
 
 
-def test_product__str(app_product: Product, app_product2) -> None:
+def test_product__str(app_product: Product, app_product2: Product) -> None:
     """Тест класса Product __app__."""
 
     assert app_product + app_product2 == 1000000.0
 
-def test_smartphone(smartphone):
+
+def test_smartphone(smartphone: Smartphone) -> None:
     """Тест параметров класса Smartphone"""
 
     assert smartphone.name == "Iphone 15"
@@ -67,7 +68,8 @@ def test_smartphone(smartphone):
     assert smartphone.memory == 512
     assert smartphone.color == "Gray space"
 
-def test_lawngrass(lawngrass):
+
+def test_lawngrass(lawngrass: LawnGrass) -> None:
     """Тест параметров класса Smartphone"""
 
     assert lawngrass.name == "Газонная трава"
@@ -78,9 +80,11 @@ def test_lawngrass(lawngrass):
     assert lawngrass.germination_period == "7 дней"
     assert lawngrass.color == "Зеленый"
 
-def test_product_add_error(app_product: Product,  lawngrass: LawnGrass) -> None:
+
+def test_product_add_error(app_product: Product, lawngrass: LawnGrass) -> None:
+    """ Тест ошибки сложения разных категорий товара"""
+
     grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
     smartphone2 = Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
     while pytest.raises(TypeError):
-        invalid_sum = smartphone2 + grass1
-
+        smartphone2 + grass1
