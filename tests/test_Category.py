@@ -1,5 +1,7 @@
+import pytest
+
 from src.Category import Category, ProductCategoryIter
-from src.Product import Product
+from src.Product import Product, LawnGrass
 
 
 def test_app_product_category(app_product_category: Category) -> None:
@@ -50,3 +52,11 @@ def test_products__str(app_product_category: Category) -> None:
 def test_products_iter(category_iter: ProductCategoryIter) -> None:
     assert category_iter.index == 0
     assert next(category_iter).name == "Samsung Galaxy S23 Ultra"
+
+
+def test_add_product_error(app_product: Product, lawngrass: LawnGrass) -> None:
+    """Тест ошибки чтобы, кроме смартфонов, травы газонной или других продуктов,
+    в список нельзя было добавлять ничего другого"""
+
+    with pytest.raises(TypeError):
+        lawngrass + 1

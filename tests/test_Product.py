@@ -81,10 +81,9 @@ def test_lawngrass(lawngrass: LawnGrass) -> None:
     assert lawngrass.color == "Зеленый"
 
 
-def test_product_add_error(app_product: Product, lawngrass: LawnGrass) -> None:
-    """ Тест ошибки сложения разных категорий товара"""
+def test___add__error(app_product: Product, lawngrass: LawnGrass) -> None:
+    """Тест ошибки сложения разных категорий товара"""
 
-    grass1 = LawnGrass("Газонная трава", "Элитная трава для газона", 500.0, 20, "Россия", "7 дней", "Зеленый")
     smartphone2 = Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
-    while pytest.raises(TypeError):
-        smartphone2 + grass1
+    with pytest.raises(TypeError):
+        smartphone2 + lawngrass
