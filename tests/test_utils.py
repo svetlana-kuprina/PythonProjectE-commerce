@@ -1,11 +1,13 @@
 import json
 from unittest.mock import mock_open, patch
 
+from requests.cookies import MockRequest
+
 from src.utils import object_from_json, open_json
 
 
 @patch("builtins.open", new_callable=mock_open)
-def test_open_json(mock_open_json) -> None:
+def test_open_json(mock_open_json: MockRequest) -> None:
     """Тест функции принимает на вход путь до JSON-файла и возвращает список словарей
     с данными. Используется Mock и patch"""
 
