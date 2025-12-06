@@ -41,7 +41,7 @@ def test_price_error(capsys, app_product: Product) -> None:
 
     app_product.price = 0.0
     message = capsys.readouterr()
-    assert message.out.strip() == "Цена не должна быть нулевая или отрицательная"
+    assert message.out.strip().split("\n")[-1] == "Цена не должна быть нулевая или отрицательная"
 
 
 def test_product_str(app_product: Product) -> None:
@@ -87,3 +87,10 @@ def test___add__error(app_product: Product, lawngrass: LawnGrass) -> None:
     smartphone2 = Smartphone("Iphone 15", "512GB, Gray space", 210000.0, 8, 98.2, "15", 512, "Gray space")
     with pytest.raises(TypeError):
         smartphone2 + lawngrass
+
+
+def test_product_mixinrepr(capsys, app_product: Product) -> None:
+    """Тест класса Product, работы Миксин (печатает в консоль информацию об объекте при инициализации)."""
+
+    message = capsys.readouterr()
+    assert message.out.strip() == "Samsung Galaxy S23 Ultra, 256GB, Серый цвет, 200MP камера, 180000.0, 5"

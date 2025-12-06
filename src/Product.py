@@ -1,7 +1,18 @@
+from abc import ABC, abstractmethod
 from typing import Any, Dict
 
+from src.MixinRepr import MixinRepr
 
-class Product:
+
+class BaseProduct(ABC):
+    """Абстрактный класс для класса Product"""
+
+    @abstractmethod
+    def __init__(self, name: str, description: str, price: float, quantity: int):
+        pass
+
+
+class Product(BaseProduct, MixinRepr):
     """Класс обрабатывает информацию о продукте"""
 
     name: str
@@ -14,13 +25,14 @@ class Product:
         self.description = description
         self.__price = price
         self.quantity = quantity
+        MixinRepr.__init__(self)
 
     def __str__(self) -> str:
         """Строковое отображение в следующем виде: Название продукта, XX руб. Остаток: XX шт."""
 
         return f"{self.name},  {self.__price} руб. Остаток: {self.quantity} шт."
 
-    def __add__(self, other) -> int:
+    def __add__(self, other: object) -> int:
         """Реализована возможность складывать товары."""
 
         if type(other) is self.__class__:
