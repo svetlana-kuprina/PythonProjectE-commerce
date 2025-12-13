@@ -53,6 +53,18 @@ class Category:
             product_str += f"{str(product)}\n"
         return product_str
 
+    def middle_price(self) -> float:
+        """Метод, который подсчитывает средний ценник всех товаров"""
+
+        # average_price = 0
+        try:
+            # for product in self.__products:
+            #     average_price += product.price
+            # return average_price / Category.product_count
+            return sum([product.price for product in self.__products]) / Category.product_count
+        except ZeroDivisionError:
+            return 0
+
 
 class ProductCategoryIter:
     """Класс итераций по продуктам"""
